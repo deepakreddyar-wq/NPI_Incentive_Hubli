@@ -1,131 +1,127 @@
-<!DOCTYPE html><html><head>
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <title>Incentive Calculator</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-    
-     body {
-        font-family: Arial, sans-serif;
-        background-image: url("Image.jpg");
-        background-size: 100% 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        margin: 0;
-        padding: 10px;
-        height: 700px;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("Image.jpg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 10px;
+    height: 700px;
+}
 
-    /* New heading style */
-    .region-title {
-        text-align: center;
-        font-size: 28px;
-        font-weight: bold;
-        color: #fff;
-        text-shadow: 3px 3px 8px black;
-        margin-bottom: 10px;
-        background: rgba(0, 110, 0, 0.65);
-        padding: 10px 15px;
-        border-radius: 10px;
-        width: 85%;
-    }
+.region-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 3px 3px 8px black;
+    margin-bottom: 10px;
+    background: rgba(0,110,0,0.65);
+    padding: 10px;
+    border-radius: 10px;
+    width: 85%;
+}
 
-    h2 {
-        text-align: center;
-        font-size: 24px;
-        color: #fff;
-        text-shadow: 3px 3px 8px black;
-        margin-bottom: 12px;
-        background: rgba(255, 0, 0, 0.75);
-        padding: 8px 12px;
-        border-radius: 8px;
-        width: 65%;
-    }
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 3px 3px 8px black;
+    margin-bottom: 12px;
+    background: rgba(255,0,0,0.75);
+    padding: 8px;
+    border-radius: 8px;
+    width: 65%;
+}
 
-    .table-box {
-        overflow-X: auto;
-        width: 100%;
-    }
+.table-box {
+    overflow-x: auto;
+    width: 100%;
+}
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background: rgba(255, 255, 255, 0.92);
-        border-radius: 10px;
-        font-size: 14px;
-    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.92);
+    border-radius: 10px;
+    font-size: 14px;
+}
 
-    th, td {
-        border: 1px solid #444;
-        padding: 10px;
-        text-align: center;
-    }
+th, td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: center;
+}
 
-    th {
-        background: #ffb48d;
-        font-weight: bold;
-    }
+th {
+    background: #ffb48d;
+    font-weight: bold;
+}
 
-    input {
-        width: 90px;
-        padding: 7px;
-        border-radius: 6px;
-        border: 1px solid #666;
-        text-align: center;
-        font-size: 15px;
-    }
+input {
+    width: 90px;
+    padding: 7px;
+    border-radius: 6px;
+    border: 1px solid #666;
+    text-align: center;
+    font-size: 15px;
+}
 
-    .hidden-col { display: none; }
-    #totalRow { display: none; }
+.hidden-col {
+    display: none;
+}
 
-    .btn {
-        margin-top: 24px;
-        padding: 14px;
-        background: #c8102e;
-        border: none;
-        color: white;
-        font-size: 18px;
-        border-radius: 8px;
-        width: 90%;
-        font-weight: bold;
-    }
+.btn {
+    margin-top: 24px;
+    padding: 14px;
+    background: #c8102e;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    width: 90%;
+    font-weight: bold;
+}
 
-    /* Popup */
-    .popup-bg {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.6);
-        display: none;
-        justify-content: center;
-        align-items: center;
-    }
+/* Popup */
+.popup-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
 
-    .popup-box {
-        background: white;
-        padding: 24px;
-        width: 85%;
-        max-width: 320px;
-        border-radius: 12px;
-        text-align: center;
-        animation: pop 0.3s ease-out;
-    }
+.popup-box {
+    background: white;
+    padding: 24px;
+    width: 85%;
+    max-width: 320px;
+    border-radius: 12px;
+    text-align: center;
+}
 
-    @keyframes pop {
-        from { transform: scale(0.7); opacity: 0; }
-        to { transform: scale(1); opacity: 1; }
-    }
-
-    .close-btn {
-        background: #c8102e;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 6px;
-        margin-top: 12px;
-        font-size: 16px;
-    }
+.close-btn {
+    background: #c8102e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-top: 12px;
+    font-size: 16px;
+}
 </style>
+</head>
 
 <body>
 
@@ -134,49 +130,46 @@
 
 <div class="table-box">
 <table id="incentiveTable">
-    <tbody><tr>
-        <th>Product</th>
-        <th>Dosage / Acre</th>
-        <th>Qty (Ltr/Kg)</th>
-        <th>Treated Acreage</th>
-        <th class="hidden-col">Incentive / Acre</th>
-        <th class="hidden-col">Treated Acre/Ltr-Kg</th>
-    </tr>
+<tbody>
 
-    <tr>
-        <td>Tirracto</td>
-        <td>160 Ml</td>
-        <td><input type="number" min="0" placeholder="Ltr/Kg" oninput="reCalc()"></td>
-        <td class="tA">0</td>
-        <td class="inc hidden-col">32</td>
-        <td class="mul hidden-col">6.25</td>
-    </tr>
+<tr>
+    <th>Product</th>
+    <th>Dosage / Acre</th>
+    <th>Qty (Ltr/Kg)</th>
+    <th>Treated Acreage</th>
+    <th class="hidden-col">Incentive / Acre</th>
+    <th class="hidden-col">Treated Acre / Ltr-Kg</th>
+</tr>
 
-    <tr>
-        <td>Tuventa</td>
-        <td>50 Ml</td>
-        <td><input type="number" min="0" placeholder="Ltr/Kg" oninput="reCalc()"></td>
-        <td class="tA">0</td>
-        <td class="inc hidden-col">25</td>
-        <td class="mul hidden-col">20</td>
-    </tr>
+<tr>
+    <td>Tirracto</td>
+    <td>160 Ml</td>
+    <td><input type="number" min="0" oninput="reCalc()"></td>
+    <td class="tA">0</td>
+    <td class="inc hidden-col">32</td>
+    <td class="mul hidden-col">6.25</td>
+</tr>
 
-    <tr>
-        <td>Velzo</td>
-        <td>500 Gm</td>
-        <td><input type="number" min="0" placeholder="Ltr/Kg" oninput="reCalc()"></td>
-        <td class="tA">0</td>
-        <td class="inc hidden-col">100</td>
-        <td class="mul hidden-col">2</td>
-    </tr>
+<tr>
+    <td>Tuventa</td>
+    <td>50 Ml</td>
+    <td><input type="number" min="0" oninput="reCalc()"></td>
+    <td class="tA">0</td>
+    <td class="inc hidden-col">25</td>
+    <td class="mul hidden-col">20</td>
+</tr>
 
-  
+<tr>
+    <td>Velzo</td>
+    <td>500 Gm</td>
+    <td><input type="number" min="0" oninput="reCalc()"></td>
+    <td class="tA">0</td>
+    <td class="inc hidden-col">100</td>
+    <td class="mul hidden-col">2</td>
+</tr>
 
-    <tr id="totalRow">
-        <th colspan="3">Total</th>
-        <th colspan="3" id="totalValue">0</th>
-    </tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 
 <button class="btn" onclick="showPopup()">Calculate Incentive</button>
@@ -192,24 +185,19 @@
 
 <script>
 function reCalc() {
-    let table = document.getElementById("incentiveTable");
     let total = 0;
 
-    // Select only product rows (rows having Qty input)
-    let rows = table.querySelectorAll("tbody tr");
-
-    rows.forEach(row => {
+    document.querySelectorAll("#incentiveTable tbody tr").forEach(row => {
         let qtyInput = row.querySelector("input");
         let treatedCell = row.querySelector(".tA");
         let incCell = row.querySelector(".inc");
         let mulCell = row.querySelector(".mul");
 
-        // Skip rows that are not product rows
-        if (!qtyInput || !treatedCell || !incCell || !mulCell) return;
+        if (!qtyInput) return;
 
         let qty = parseFloat(qtyInput.value) || 0;
-        let mul = parseFloat(mulCell.innerText) || 0;
-        let inc = parseFloat(incCell.innerText) || 0;
+        let mul = parseFloat(mulCell.innerText);
+        let inc = parseFloat(incCell.innerText);
 
         let treated = qty * mul;
         treatedCell.innerText = treated.toFixed(2);
@@ -217,12 +205,12 @@ function reCalc() {
         total += treated * inc;
     });
 
-    document.getElementById("totalValue").innerText = total.toFixed(0);
+    window.finalTotal = total.toFixed(0);
 }
 
 function showPopup() {
     document.getElementById("popValue").innerText =
-        "Rs " + document.getElementById("totalValue").innerText + " /-";
+        "Rs " + (window.finalTotal || 0) + " /-";
     document.getElementById("popup").style.display = "flex";
 }
 
@@ -231,7 +219,5 @@ function closePopup() {
 }
 </script>
 
-</body></html>
-
-
-
+</body>
+</html>
