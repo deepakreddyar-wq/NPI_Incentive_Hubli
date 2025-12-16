@@ -193,16 +193,25 @@ function reCalc() {
     let table = document.getElementById("incentiveTable");
     let total = 0;
 
-    for (let i = 1; i <= 5; i++) {
-        let qty = parseFloat(table.rows[i].cells[2].children[0].value) || 0;
-        let mul = parseFloat(table.rows[i].cells[5].innerText);
-        let inc = parseFloat(table.rows[i].cells[4].innerText);
+    // Loop through product rows only (exclude header & total row)
+    for (let i = 1; i < table.rows.length - 1; i++) {
+
+        let qtyInput = table.rows[i].cells[3].querySelector("input");
+        if (!qtyInput) continue;
+
+        let qty = parseFloat(qtyInput.value) || 0;
+        let inc = parseFloat(table.rows[i].cells[5].innerText) || 0;
+        let mul = parseFloat(table.rows[i].cells[6].innerText) || 0;
 
         let treated = qty * mul;
-        table.rows[i].cells[3].innerText = treated.toFixed(2);
+        table.rows[i].cells[4].innerText = treated.toFixed(2);
 
         total += treated * inc;
     }
+
+    document.getElementById("totalValue").innerText = total.toFixed(0);
+}
+</script>
 
     document.getElementById("totalValue").innerText = total;
 }
@@ -219,6 +228,7 @@ function closePopup() {
 </script>
 
 </body></html>
+
 
 
 
