@@ -145,7 +145,7 @@
 
     <tr>
         <td>Tirracto</td>
-        <td>80 Ml</td>
+        <td>160 Ml</td>
         <td><input type="number" min="0" placeholder="Ltr/Kg" oninput="reCalc()"></td>
         <td class="tA">0</td>
         <td class="inc hidden-col">32</td>
@@ -154,7 +154,7 @@
 
     <tr>
         <td>Tuventa</td>
-        <td>40 Ml</td>
+        <td>50 Ml</td>
         <td><input type="number" min="0" placeholder="Ltr/Kg" oninput="reCalc()"></td>
         <td class="tA">0</td>
         <td class="inc hidden-col">25</td>
@@ -162,13 +162,15 @@
     </tr>
 
     <tr>
-        <td>Resonex</td>
-        <td>400 Gm</td>
+        <td>Velzo</td>
+        <td>500 Gm</td>
         <td><input type="number" min="0" placeholder="Ltr/Kg" oninput="reCalc()"></td>
         <td class="tA">0</td>
         <td class="inc hidden-col">100</td>
         <td class="mul hidden-col">2</td>
     </tr>
+
+  
 
     <tr id="totalRow">
         <th colspan="3">Total</th>
@@ -193,32 +195,34 @@ function reCalc() {
     let table = document.getElementById("incentiveTable");
     let total = 0;
 
-    // Loop through product rows only (exclude header & total row)
-    for (let i = 1; i < table.rows.length - 1; i++) {
+    // Select only product rows (rows having Qty input)
+    let rows = table.querySelectorAll("tbody tr");
 
-        let qtyInput = table.rows[i].cells[3].querySelector("input");
-        if (!qtyInput) continue;
+    rows.forEach(row => {
+        let qtyInput = row.querySelector("input");
+        let treatedCell = row.querySelector(".tA");
+        let incCell = row.querySelector(".inc");
+        let mulCell = row.querySelector(".mul");
+
+        // Skip rows that are not product rows
+        if (!qtyInput || !treatedCell || !incCell || !mulCell) return;
 
         let qty = parseFloat(qtyInput.value) || 0;
-        let inc = parseFloat(table.rows[i].cells[5].innerText) || 0;
-        let mul = parseFloat(table.rows[i].cells[6].innerText) || 0;
+        let mul = parseFloat(mulCell.innerText) || 0;
+        let inc = parseFloat(incCell.innerText) || 0;
 
         let treated = qty * mul;
-        table.rows[i].cells[4].innerText = treated.toFixed(2);
+        treatedCell.innerText = treated.toFixed(2);
 
         total += treated * inc;
-    }
+    });
 
     document.getElementById("totalValue").innerText = total.toFixed(0);
 }
-</script>
-
-    document.getElementById("totalValue").innerText = total;
-}
 
 function showPopup() {
-    let finalValue = document.getElementById("totalValue").innerText;
-    document.getElementById("popValue").innerText = "Rs " + finalValue + " /-";
+    document.getElementById("popValue").innerText =
+        "Rs " + document.getElementById("totalValue").innerText + " /-";
     document.getElementById("popup").style.display = "flex";
 }
 
@@ -228,7 +232,6 @@ function closePopup() {
 </script>
 
 </body></html>
-
 
 
 
